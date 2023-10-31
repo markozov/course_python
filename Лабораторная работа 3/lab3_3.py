@@ -8,7 +8,6 @@ def count_letters(str):
     letter_join_low = letter_join.lower()
     letter_list = list(letter_join_low)
     letter_list.sort()
-    print(letter_list)
     list_l = list(letter_join_low)
     set_letter = set(list_l)
     list_letter = list(set_letter)
@@ -19,26 +18,28 @@ def count_letters(str):
         letters_numbers = float(letters_numbers)
         list_numbers.append(letters_numbers)
 
-    #print(list_numbers)
-    #print(list_letter)
+    
     dict_letter = dict(zip(list_letter, list_numbers))
     numbers = len(letter_join_low)
-    #print(dict_letter)
-    #print(numbers)
+
     return dict_letter
 
 
 
 # TODO Напишите функцию calculate_frequency
-def calculate_frequency(dict):
+def calculate_frequency(dict_):
     key = []
     numbers = []
-    for key_d in dict.keys():
+    for key_d in dict_.keys():
         key.append(key_d)
-    for number_d in dict.values():
-        numbers.append(number_d)
-    print(key)
-    print(numbers)
+    for number_d in dict_.values():
+        numbers.append(number_d/701)
+    slovar = dict(zip(key, numbers))
+
+    return slovar
+
+   # print(key)
+    #print(numbers)
 
 
 main_str = """
@@ -76,6 +77,9 @@ main_str = """
 Под ним сидел, и кот учёный
 Свои мне сказки говорил.
 """
-count_letters(main_str)
+#count_letters(main_str)
 # TODO Распечатайте в столбик букву и её частоту в тексте
-#calculate_frequency(count_letters(main_str))
+calculate_frequency(count_letters(main_str))
+for key,value in calculate_frequency(count_letters(main_str)).items():
+    print(f'{key}: {value:.2f}')
+
