@@ -7,18 +7,22 @@ def count_letters(str):
             letter_join = letter_join.replace(i, '')
     letter_join_low = letter_join.lower()
     letter_list = list(letter_join_low)
-    letter_list.sort()
     list_l = list(letter_join_low)
-    set_letter = set(list_l)
-    list_letter = list(set_letter)
+    list_letter = []
+    for letter in list_l:
+        if letter in list_letter:
+            continue
+        else:
+            list_letter.append(letter)
+
     list_numbers = []
-    for letter in set_letter:
+    for letter in list_letter:
         letter_join_low.count(letter)
         letters_numbers = letter_join_low.count(letter)
         letters_numbers = float(letters_numbers)
         list_numbers.append(letters_numbers)
 
-    
+
     dict_letter = dict(zip(list_letter, list_numbers))
     numbers = len(letter_join_low)
 
@@ -38,8 +42,7 @@ def calculate_frequency(dict_):
 
     return slovar
 
-   # print(key)
-    #print(numbers)
+
 
 
 main_str = """
